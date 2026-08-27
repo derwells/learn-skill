@@ -1,8 +1,8 @@
 # learn
 
-A Claude Code skill that turns Claude into a daily tutor. Give it a topic and it researches a curriculum from real sources, then runs ~30-minute lessons with a few exercises each. It keeps a persistent notebook of what has clicked and what is still shaky, so a course spanning months of short sessions stays coherent.
+A Claude Code skill that turns Claude into a daily tutor. Give it a topic and it researches a curriculum from real sources, then runs ~30 minute lessons with a few exercises each. A notebook on disk tracks what has clicked and what is still shaky, so a course can run for months of short sessions without losing the thread.
 
-Built for learning after work: short lessons, breadth-first, intuition over grinding. The exercises are probes to check whether an idea landed, not gates you have to pass.
+I built it because I kept failing to study after work. Textbook exercises want you to shut everything else down and think for an hour, and I could never do that consistently at 9pm. These lessons are short and light enough to do tired, and the tutor remembers exactly where your understanding left off. Showing up is the only hard part.
 
 ## Install
 
@@ -10,7 +10,7 @@ Built for learning after work: short lessons, breadth-first, intuition over grin
 git clone https://github.com/derwells/learn-skill ~/.claude/skills/learn
 ```
 
-That's it. Claude Code picks up skills in `~/.claude/skills/` automatically.
+Claude Code picks up anything in `~/.claude/skills/` on its own.
 
 ## Use
 
@@ -20,7 +20,7 @@ That's it. Claude Code picks up skills in `~/.claude/skills/` automatically.
 | `/learn` or "today's lesson" | Runs a ~30 min session |
 | `/learn status` | Progress across your courses |
 | `/learn review` | Revisits shaky ideas from fresh angles, no new material |
-| `/learn curate` | No lesson; retune how the course is run |
+| `/learn curate` | No lesson. You and the tutor retune how the course is run |
 
 Courses live in `.learning/` at the root of whatever project you run it in:
 
@@ -38,13 +38,15 @@ Commit `.learning/` if the project is a repo. Your learning history is worth ver
 
 ## How it teaches
 
-- Anchors every concept with an analogy before formalizing it
-- Checks understanding by making you produce something: explain it back, predict an outcome, spot the bug in a broken version
-- Never reuses a problem or framing you've already seen
-- Follows your "wait, why?" questions at the expense of coverage
-- Records its own mistakes at the end of each session and reads them before the next one
+- Analogy first, formalism after
+- It checks understanding by making you produce something: explain the idea back, or spot what's wrong in a broken version
+- A problem or framing you've already seen never comes back as a probe
+- Your "wait, why?" questions win over coverage, every time
+- At the end of a session it writes up its own mistakes, and reads them before the next one
 
-Most of what's in `SKILL.md` was earned through real sessions rather than designed up front. The rules in it exist because their absence broke something at least once.
+Exercises are probes, not gates. A wrong answer followed by "oh, I see why" counts for more than a right answer produced mechanically.
+
+Most of what's in `SKILL.md` came out of real sessions rather than upfront design. Nearly every rule in it exists because its absence broke a session at least once.
 
 ## License
 
