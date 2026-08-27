@@ -6,11 +6,15 @@ I made this because I couldn't study consistently after work. Textbook exercises
 
 ## Install
 
-```bash
-git clone https://github.com/derwells/learn-skill ~/.claude/skills/learn
-```
+Works with any harness that supports [Agent Skills](https://agentskills.io) (Claude Code, opencode, Codex, Gemini CLI, ...). Clone into your harness's skills directory:
 
-Claude Code picks up anything in `~/.claude/skills/`.
+```bash
+# Claude Code (opencode reads this path too)
+git clone https://github.com/derwells/learn-skill ~/.claude/skills/learn
+
+# Codex and others
+git clone https://github.com/derwells/learn-skill ~/.agents/skills/learn
+```
 
 ## Use
 
