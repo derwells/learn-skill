@@ -16,6 +16,8 @@ git clone https://github.com/derwells/learn-skill ~/.claude/skills/learn
 git clone https://github.com/derwells/learn-skill ~/.agents/skills/learn
 ```
 
+Needs web search (curriculum research) and `jq` or `python3` (notebook validation).
+
 ## Use
 
 | Say | What happens |
@@ -49,6 +51,20 @@ Worth committing `.learning/` if the project is a repo.
 - Logs its own mistakes at session end, reads them next session
 
 Wrong answers are fine. What matters is you end up seeing why.
+
+A concept entry in the notebook looks like this:
+
+```json
+"stats.clt": {
+  "understanding": "settling",
+  "notes": [
+    "clicked via the 'many small independent nudges' framing",
+    "still conflates convergence of the distribution with a sample path — try a simulation angle next"
+  ]
+}
+```
+
+That's what the tutor reads back three weeks later. It never re-asks a question you've seen — it tracks the angles it has already tried.
 
 Most of SKILL.md came from real sessions, not upfront design. Almost every rule in it is there because not having it broke a session at least once.
 
