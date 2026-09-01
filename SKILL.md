@@ -1,6 +1,8 @@
 ---
 name: learn
-description: Intuition-first daily tutoring for deep technical topics (statistics, math, computer science, software, and secondarily languages or any other subject). Builds a researched curriculum for a topic, then runs short (~30 min) teaching sessions aimed at genuine understanding — analogies, dialogue, and light exercises as probes rather than gates — with the tutor keeping a persistent notebook of what has clicked and what's still shaky in the project's .learning/ directory. Use whenever the user wants to learn or study a topic over time, start a course, do a lesson, practice, review material, resume studying, check learning progress, or retune how a course is run — including invocations like /learn, /learn curate, "let's do today's lesson", "teach me X over the next few months", "start a course on Y", "I'm annoyed at this course", or "where am I in my stats course?".
+description: Intuition-first daily tutoring for deep technical topics. Builds a researched curriculum, then runs ~30-min sessions — analogies, dialogue, and light exercises as probes — with a persistent tutor notebook (.learning/) tracking what clicked and what's still shaky. Use whenever the user wants to learn or study a topic over time, start or continue a course, do a lesson, review, check learning progress, or retune how a course is run — /learn, /learn new <topic>, /learn status, /learn review, /learn curate, "today's lesson", "teach me X over the next few months", "start a course on Y", "I'm annoyed at this course", or "where am I in my stats course?".
+license: MIT
+compatibility: Needs file write access and web search; jq or python3 for validating JSON
 ---
 
 # Learn: intuition-first daily tutoring
@@ -46,7 +48,7 @@ Read `references/progress-schema.md` before writing `progress.json` for the firs
 **Write integrity — the notebook is the course.** Two hard rules, both paid for in lost data:
 
 1. **Checkpoint mid-session, not just at close.** Write `progress.json` (and start the session log) at every natural boundary: when a lesson closes, when the user gives any course-run feedback (persist it the moment it's said — in the same turn, never "I'll write that in at the end"), and around the 30-minute mark. Any promise to update a file happens in the same turn as the promise. If a write is blocked (permission prompt, worktree guard), resolving that blocker takes priority over continuing to teach — the one session lost on record died exactly there: writes blocked by a guard, the access question left unanswered, everything gone. A session that ends without its writes never happened as far as the next session knows.
-2. **Validate after every write.** After writing `progress.json`, parse it back (`jq empty` or equivalent) in the same turn. Hand-editing a growing JSON file corrupted a notebook once (concepts stranded outside the `concepts` object, duplicate keys silently shadowing earlier entries). If you're restructuring rather than appending, prefer a full read-modify-rewrite over string surgery.
+2. **Validate after every write.** After writing `progress.json`, parse it back (`jq empty`, or `python3 -m json.tool` where jq isn't installed) in the same turn. Hand-editing a growing JSON file corrupted a notebook once (concepts stranded outside the `concepts` object, duplicate keys silently shadowing earlier entries). If you're restructuring rather than appending, prefer a full read-modify-rewrite over string surgery.
 
 ## Course styles
 
@@ -67,17 +69,7 @@ Beyond its style, every course accumulates its own standing rules — and the fa
 
 ## Mode: Create a course
 
-This is the expensive step — do it once, thoroughly, so every future session is instant.
-
-1. **Scope interview (brief).** Ask only what you can't infer: their current level with the topic, what they want to be able to *do or understand* at the end, any deadline, and **how they want it run — drilled like a student (`tutor`) or briefed like a colleague (`design-partner`)**. One round of questions, not an interrogation. Before researching, check `.learning/` for existing courses whose goals overlap the new one; propose merging or a companion structure instead of a silent parallel course, and read `learner.md` so day one inherits everything already known about the learner.
-
-2. **Research deeply.** This can take a while and that's expected — the whole point of persisting materials is to never pay this cost twice. Use web search for current best references, syllabi from real university courses, canonical textbooks, and the best explanations and analogies people have found for the hard ideas. If the `claudex` skill is available, use it to fan out broad research (e.g., one query per candidate unit) and keep your own context for synthesis. You are building the course from real sources, not just from memory — memory gets the shape right but misses the best explanations and modern practice.
-
-3. **Write `curriculum.md`.** Structure: course goal → total hour estimate (state it honestly; 500 hours is a fine answer) → units → lessons. Each **lesson** is sized for roughly one session (~30 min) and lists: the concepts it introduces (with stable concept IDs like `stats.clt`), prerequisites, and its **key intuition** — a one-line statement of the thing that must click (e.g., "the CLT is about *sums* washing out the shape of the parts — see why averaging is summing"). Number units and lessons.
-
-4. **Write `materials/unit-NN-<slug>.md` for at least the first two units** — teaching notes: the core ideas explained well, the best available analogies, worked examples, a pool of exercise seeds per lesson (probes, not quizzes), common misconceptions, and source links. Later units can be researched lazily when the user is one unit away from reaching them (do this at the *end* of a session so it never delays one).
-
-5. **Initialize `progress.json`** and tell the user the shape of the course: total estimated hours, number of units, and what session 1 will cover. Do not run a session in the same sitting unless they ask.
+The expensive step — done once, thoroughly, so every future session is instant. Read `references/create-course.md` and follow it end to end: scope interview (including the tutor vs design-partner style question), deep research, `curriculum.md`, materials for the first two units, initialize `progress.json`.
 
 ## Mode: Run a session
 
@@ -120,24 +112,11 @@ Much of the closing write should already exist from mid-session checkpoints (see
 
 ## Mode: Curate
 
-`/learn curate` — no lesson taught. This is course maintenance done *with* the user, and it has historically been the highest-leverage session type: run one rather than letting friction accrete. Suggest it yourself when the same friction shows up across two or three sessions, when the contract has grown past ~a dozen rules, or when the user sounds annoyed at the course rather than at a concept.
-
-1. **Diagnose from evidence, not vibes.** Reread the recent session logs and the notebook and name what's actually breaking or dragging. The recurring culprits on record: one lesson quietly eating three-plus sessions, corrections written then buried under newer notes, probe types that hide instead of reveal, goals that drifted since course creation.
-2. **Renegotiate with the user.** Are the goals still right? The pacing? The probe intensity? What should be cut outright rather than carried as debt? Their answers override everything downstream.
-3. **Compact.** Rewrite the contract as a few numbered rules (behavior, not sentiment); compress concept notes to durable residue; cancel stale debts *explicitly* (a parked concept is parked — say so in its note) so future sessions don't resurrect them.
-4. **Record it.** A dated session log in `sessions/` (curation counts as a session, not a lesson), the rewritten contract in `progress.json`, any learner-level discoveries to `learner.md`, and scope changes into `curriculum.md`. Validate the JSON.
+No lesson taught — course maintenance done *with* the user, historically the highest-leverage session type. Suggest one yourself when the same friction shows up across two or three sessions, when the contract grows past ~a dozen rules, or when the user sounds annoyed at the course rather than at a concept. To run one, read `references/curate.md` first.
 
 ## Keeping courses fresh
 
-Some topics move faster than a course runs (AI tooling, live ecosystems, anything vendor-driven). For those, staleness is the tutor's problem, not the learner's:
-
-- **When creating a curriculum on a fast-moving topic**, add a short "Freshness policy" section to `curriculum.md` stating how often to re-sweep and where incremental findings accumulate (a dated `research/<YYYY-MM>-updates.md` convention works well).
-- **At session start**, if the upcoming lesson leans on landscape/current-practice material and the newest dated file in `research/` is more than ~4–6 weeks old, run a quick web sweep before teaching and append findings to a dated updates file. Timeless units (math, foundations) skip this.
-- **When the learner names a development the materials don't cover**, research it immediately and fold it into the curriculum — learner-surfaced gaps are the best staleness signal.
-- **Fold updates in as revisions, not rewrites**: keep superseded claims in place, dated, as thesis/antithesis material — courses that teach a field's arguments should show how those arguments aged.
-- Sweeps happen at session *end* or before the session proper, never mid-lesson.
-- **Verify delegated research before teaching it.** Broad research fanned out to cheaper models is reliable on *shape* and unreliable on *specifics* — on record it has misattributed authors, invented precise-looking correlation coefficients, and fabricated a quote under a real person's name. Anything that will be asserted to the learner as fact (a quote, a number, a citation, a version) gets checked against a primary source first; whatever isn't checked is marked `[unverified]` inline in the materials.
-- **Tell the learner how this works** if they ask (e.g. "how do I trigger the lazy research?") — the freshness and lazy-materials machinery is theirs to invoke, not a tutor secret; a one-paragraph explanation in the course's curriculum "Freshness policy" section is worth writing.
+Some topics move faster than a course runs (AI tooling, live ecosystems, anything vendor-driven); staleness is the tutor's problem, not the learner's. The part that fires at session time: if the upcoming lesson leans on landscape/current-practice material and the newest dated file in the course's `research/` is more than ~4–6 weeks old, run a quick web sweep before teaching (timeless units skip this). When the learner names a development the materials don't cover, research it immediately. Anything delegated research will assert as fact gets checked against a primary source or marked `[unverified]`. Full policy — including the "Freshness policy" curriculum section for fast-moving courses — in `references/freshness.md`.
 
 ## Mode: Status
 
