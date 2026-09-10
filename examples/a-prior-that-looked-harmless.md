@@ -2,17 +2,13 @@
 
 One full session from my Bayesian statistics course, the second half of a lesson on priors as regularization. MMM means marketing mix model, a regression that attributes sales to advertising channels. It has dozens of parameters, each with a prior.
 
-Everything below is what appeared in my terminal, in order, minus the tool calls. My messages are as typed, most of them dictated. Figures were drawn by the tutor mid-session and pushed to my phone; they are re-rendered here from its code. One figure was sent twice during the session (the first version had an eyeballed peak), only the corrected one is shown.
+Everything below is what appeared in my terminal, in order, minus the tool calls. My messages are the quoted blocks, as typed, most of them dictated. Figures were drawn by the tutor mid-session and pushed to my phone; they are re-rendered here from its code. One figure was sent twice during the session (the first version had an eyeballed peak), only the corrected one is shown.
 
 Edits: colleagues and clients quoted by name are now "a colleague", one line about time elapsed was dropped, and the git housekeeping at the very end was cut.
 
 ---
 
-**Tutor**
-
 Notebook loaded. Reading the 3.2 materials, then I'll open the session.
-
-**Tutor**
 
 Welcome back. A normal warm-up, then the second half of 3.2. Rule 4 applies today: 3.2 gets this session and then we close it out, whatever is left goes into warm-up rotation.
 
@@ -42,12 +38,11 @@ Two questions, answer both in a line or two each:
 1. Which of A, B, C is the **most regularized** (the stiffest spring, the biggest fine)?
 2. D is the odd one out. What **kind** of claim is D making that A, B, C are not?
 
-**Me**
+> **Me**
+>
+> 1. A is the most regularized? Very narrow
+> 2. Center is in 2?
 
-1. A is the most regularized? Very narrow
-2. Center is in 2?
-
-**Tutor**
 
 **1. Right.** A. Standard deviation 0.1 on a standardized slope says "this channel almost certainly moves y by less than 0.3 SD". That's a strong fine. C at sd 10 is barely a fine at all.
 
@@ -57,11 +52,10 @@ A, B, C all say "presume innocence". The effect is zero until the data drags it 
 
 D says something different in kind, not degree. Before seeing a single row of data, what does D already believe about this channel?
 
-**Me**
+> **Me**
+>
+> It believes that the mean happens at 2 unless the data says otherwise
 
-It believes that the mean happens at 2 unless the data says otherwise
-
-**Tutor**
 
 Yes. And that's the whole point: D is **not a regularizer**. A regularizer pulls toward "no effect". D pulls toward "a big positive effect of 2 SD per SD". That's an assertion about the world, made before any data.
 
@@ -77,21 +71,19 @@ A colleague asks: "is that a lot?"
 
 What do you say back? One line.
 
-**Me**
+> **Me**
+>
+> 40 standard deviations off? or just 40 sales unit off or something arbitrary
 
-40 standard deviations off? or just 40 sales unit off or something arbitrary
-
-**Tutor**
 
 Right instinct, you refused to answer without the units. Take it as raw: 40 sales, on a shop that sells a few hundred a day.
 
 What's the **one number** you need from the model before you can answer your colleague?
 
-**Me**
+> **Me**
+>
+> The mean and the standard deviation? I say standard deviation out of my ass but idk if thats a representative number
 
-The mean and the standard deviation? I say standard deviation out of my ass but idk if thats a representative number
-
-**Tutor**
 
 Not out of your ass. That's exactly the number, and the hedge is the only gap. Let me close it.
 
@@ -113,8 +105,6 @@ So the honest answer to your colleague is: "depends on the sigma the model fit. 
 Both warm-ups pass. Saving a checkpoint, then the lesson.
 
 ![](a-prior-that-looked-harmless.png)
-
-**Tutor**
 
 Figure sent to Telegram. Look at it while you read this.
 
@@ -140,11 +130,10 @@ One-line recap: small sigma is not weak, small sigma is *strong*, and the transf
 
 Two things: is "tiny sigma = weak prior" even right on its own, before the softmax? And what's the one thing you'd do before agreeing with them?
 
-**Me**
+> **Me**
+>
+> I'm a bit confused. You're saying that this prior on the left means that we're saying to the model that sales change is very small, like less than 10%. The extreme is already 10%. You're saying that it's not a weak prior. It's just a wrong prior, right? Tiny sigma doesn't mean weak prior. It means we assume that this won't have that big of an effect, which itself is a strong statement. But I am confused about, or is that just the point of this, what you just said that half norm, like small and big priors, are both strong assumptions? Also separately, just a tangent that you don't have to take too seriously: I'm wondering if these things just get glossed over because there are so many parameters and so many priors to keep track of?
 
-I'm a bit confused. You're saying that this prior on the left means that we're saying to the model that sales change is very small, like less than 10%. The extreme is already 10%. You're saying that it's not a weak prior. It's just a wrong prior, right? Tiny sigma doesn't mean weak prior. It means we assume that this won't have that big of an effect, which itself is a strong statement. But I am confused about, or is that just the point of this, what you just said that half norm, like small and big priors, are both strong assumptions? Also separately, just a tangent that you don't have to take too seriously: I'm wondering if these things just get glossed over because there are so many parameters and so many priors to keep track of?
-
-**Tutor**
 
 Not wrong prior, and you've actually got it. Let me restate the core in three sentences, because your second paragraph is correct and the confusion is only in the words "weak" and "strong".
 
@@ -164,13 +153,12 @@ Recap in one line: sigma tells you width in parameter space; the only honest mea
 
 Next: "more parameters than data points". Want me to go straight in, or do you want a beat on this one first?
 
-**Me**
+> **Me**
+>
+> Sure
 
-Sure
 
 ![](ridge.png)
-
-**Tutor**
 
 Two figures landed in Telegram. Use the second one, marked "corrected version".
 
@@ -198,11 +186,10 @@ C.  moves toward (0, 2)
 
 And one sentence on why.
 
-**Me**
+> **Me**
+>
+> towards 2,0 right? cause thats a strong prior on b1 being 0
 
-towards 2,0 right? cause thats a strong prior on b1 being 0
-
-**Tutor**
 
 Reasoning right, coordinate slipped. "Strong prior on b1 being 0" means b1 goes to 0. The point with b1 = 0 is **(0, 2)**: channel 1 gets nothing, channel 2 gets all the credit. So C. The pairs are (b1, b2), and (2, 0) is the opposite corner.
 
@@ -228,11 +215,10 @@ House phrase: **dropping a variable is a prior with sigma zero.**
 
 Two war-story pieces left in 3.2, then we close the lesson. Time check: about 30 minutes in. Continue, or stop here at a clean boundary?
 
-**Me**
+> **Me**
+>
+> what are the war stories
 
-what are the war stories
-
-**Tutor**
 
 Both short, and both are vocabulary-level, no figure needed.
 
@@ -261,13 +247,12 @@ That's all of 3.2. Recap of the lesson in four house phrases:
 
 Closing the lesson and writing the notebook now. Anything from today you want to poke at before I do?
 
-**Me**
+> **Me**
+>
+> whats a lasso? whats l2
 
-whats a lasso? whats l2
 
 ![](l1-vs-l2.png)
-
-**Tutor**
 
 Fair question, I used both names as if they'd been taught. Figure sent.
 
@@ -297,8 +282,6 @@ One-line recap: **L2 fines the square, L1 fines the absolute value, and only the
 
 Closing the notebook for 3.2 now.
 
-**Tutor**
-
 Notebook written and validated. 3.2 is closed.
 
 **What clicked today**
@@ -318,6 +301,7 @@ Notebook written and validated. 3.2 is closed.
 
 Two tutor misses on my side worth naming: I used "lasso" and "L2" for a whole block before defining either, and the first ridge figure had the peak eyeballed instead of computed. Both are in the log.
 
-**Me**
+> **Me**
+>
+> ok ggs ready for next sesh
 
-ok ggs ready for next sesh

@@ -2,11 +2,9 @@
 
 A stretch of my Bayesian statistics course, the first lesson on linear regression. Earlier in the session the tutor had introduced the model as three "dials" (alpha, beta, sigma) with priors, plus one line of "plumbing" (`mu = alpha + beta * x`), pinned to data. This picks up at the first figure.
 
-The figures were drawn by the tutor during the session (it fit a real PyMC model on 37 fake apartments) and pushed to my phone. They are re-rendered here from the tutor's own code, and the dollar amounts in the text were updated to match the re-rendered fit. Text is otherwise verbatim, typos included, except that I cut a tangent on credible versus confidence intervals and the "what's next" lines.
+The figures were drawn by the tutor during the session (it fit a real PyMC model on 37 fake apartments) and pushed to my phone. They are re-rendered here from the tutor's own code, and the dollar amounts in the text were updated to match the re-rendered fit. My messages are the quoted blocks. Text is otherwise verbatim, typos included, except that I cut a tangent on credible versus confidence intervals and the "what's next" lines.
 
 ---
-
-**Tutor**
 
 Check your phone — a figure just landed. That picture is the single most load-bearing image of this unit, so let's stand in front of it for a minute.
 
@@ -27,11 +25,10 @@ The classic mistake this picture kills: "the regression line is the answer." The
 
 Read the picture back to me on one question: a client wants a single rent number for a 60 m² apartment, and a single rent number for a 130 m² apartment. Using only what you see in the figure — for which one is a single number a *worse* lie, and what would you hand the client instead?
 
-**Me**
+> **Me**
+>
+> Worst life for 130 m². I don't know how to do the interval but I'd hand them an interval, like this line and that line, like a price range for max and minimum or the percentile. I wonder how you compute percentiles for this actually if any or how you compute averages. Are averages, you just draw a vertical line and get the average of all the pointed hits of all the other lines or do you have to find a single best fit line or single average line?
 
-Worst life for 130 m². I don't know how to do the interval but I'd hand them an interval, like this line and that line, like a price range for max and minimum or the percentile. I wonder how you compute percentiles for this actually if any or how you compute averages. Are averages, you just draw a vertical line and get the average of all the pointed hits of all the other lines or do you have to find a single best fit line or single average line?
-
-**Tutor**
 
 You just reinvented the exact mechanic, and I want to confirm it loudly: **yes — you draw a vertical line and collect where every line in the bag crosses it.** No "single best-fit line" is ever needed. Let me wire it to machinery you already own, then put the picture on your phone.
 
@@ -60,13 +57,12 @@ And the real numbers from the fit, so you see both ranges from a minute ago:
 
 Notice the right panel is just… a posterior histogram. Nothing regression-specific survived the slicing: once you have the column, it's Unit 1 all the way down.
 
-**Me**
+> **Me**
+>
+> Ok makes sense. Just confused by this statement
+>
+> So per row, you also roll the die: take the row's crossing point and add Normal(0, that row's σ).
 
-Ok makes sense. Just confused by this statement
-
-So per row, you also roll the die: take the row's crossing point and add Normal(0, that row's σ).
-
-**Tutor**
 
 Fair — that line was written like code. Let me say it like a story.
 
