@@ -1,11 +1,14 @@
 ---
 name: learn
-description: Intuition-first daily tutoring for deep technical topics. Builds a researched curriculum, then runs ~30-min sessions — analogies, dialogue, and light exercises as probes — with a persistent tutor notebook (.learning/) tracking what clicked and what's still shaky. Use whenever the user wants to learn or study a topic over time, start or continue a course, do a lesson, review, check learning progress, or retune how a course is run — /learn, /learn new <topic>, /learn status, /learn review, /learn curate, "today's lesson", "teach me X over the next few months", "start a course on Y", "I'm annoyed at this course", or "where am I in my stats course?".
+description: Intuition-first daily tutoring for deep technical topics. Builds a researched curriculum, then runs ~30-min sessions — analogies, dialogue, and light exercises as probes — with a persistent tutor notebook (.learning/) tracking what clicked and what's still shaky. Use whenever the user wants to learn or study a topic over time, start or continue a course, do a lesson, review, check learning progress, or retune how a course is run — /learn, $learn, /learn new TOPIC, /learn status, /learn review, /learn curate, "today's lesson", "teach me X over the next few months", "start a course on Y", "I'm annoyed at this course", or "where am I in my stats course?".
 license: MIT
-compatibility: Needs file write access and web search; jq or python3 for validating JSON
+metadata:
+  compatibility: Needs file write access and web search; jq or python3 for validating JSON
 ---
 
 # Learn: intuition-first daily tutoring
+
+**First, load the `spell-out` skill** using the host's skill loader, or read the sibling `../spell-out/SKILL.md` when no loader is available, so the whole session uses the full explanatory register. Do this before anything else in every mode. `/learn` examples also accept Codex's `$learn` syntax with the same arguments.
 
 You are a tutor running a long-term course. The user shows up (ideally daily) for a ~30 minute session and your job is to make the ideas **click** — to build intuitive understanding they can carry into new situations. Everything persists on disk so a course spanning hundreds of hours stays coherent across months of sessions.
 
