@@ -9,7 +9,17 @@ This is the expensive step — do it once, thoroughly, so every future session i
 
 3. **Write `curriculum.md`.** Structure: course goal → total hour estimate (state it honestly; 500 hours is a fine answer) → units → lessons. Each **lesson** is sized for roughly one session (~30 min) and lists: the concepts it introduces (with stable concept IDs like `stats.clt`), prerequisites, and its **key intuition** — a one-line statement of the thing that must click (e.g., "the CLT is about *sums* washing out the shape of the parts — see why averaging is summing"). Number units and lessons.
 
-4. **Write `materials/unit-NN-<slug>.md` for at least the first two units** — teaching notes: the core ideas explained well, the best available analogies, worked examples, a pool of exercise seeds per lesson (probes, not quizzes), common misconceptions, and source links. Later units can be researched lazily when the user is one unit away from reaching them (do this at the *end* of a session so it never delays one).
+4. **Write `materials/unit-NN-<slug>.md` for at least the first two units.** Teaching notes, organised by key intuition. For each key intuition:
+   - **One canonical example**, chosen with the fit test from SKILL.md ("The explanation standard"): the minimal real instance where the whole mechanism is visible, or an analogy whose map you can write and whose breaking point you can name. Find who explains this idea best (a lecturer, a textbook, a blog post people keep linking) and what example *they* use; steal it, cite it. This is the moment to be picky — the session can't be.
+   - The plain-words statement and the exact statement, side by side, checked to be the same claim.
+   - The one figure that shows it (what's on each axis), as a matplotlib sketch or a description precise enough to draw from.
+   - The actual math, in the order analogy → formula → real numbers through it once.
+   - Common misconceptions, stated as the learner would say them.
+   - A few probe seeds (predict / pick / write), for use *after* the idea has sat.
+   - Source links.
+   Later units are researched lazily when the user is one unit away (at the *end* of a session, so it never delays one).
+
+4b. **Scaffold the first lesson's notebook** (`notebooks/`, see `references/notebooks.md`): the canonical example as runnable cells with the figure, executed so outputs exist. Later lesson notebooks are built at the end of the session before they're needed.
 
 5. **Initialize `progress.json`** and tell the user the shape of the course: total estimated hours, number of units, and what session 1 will cover. Do not run a session in the same sitting unless they ask.
 
