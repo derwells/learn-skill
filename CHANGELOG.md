@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Rebuilt teaching around professor-led lessons with a central question, developed reasoning, contrasts, and guided application.
+- Removed the fixed explanation length, mandatory stops, delayed-question rules, and automatic probe backlog.
+- Expanded course preparation to include worked solutions, comparisons, assumptions, and tasks with decreasing help.
+- Added `unassessed` understanding and optional evidence records; preserved existing course histories and explicit preferences.
+- Updated notebook guidance to keep prediction answers separate from executed demonstrations.
+- Added migration guidance for existing courses and revised curation to repair teaching materials as well as contracts.
+
 ## 1.1.0 — 2026-09-16
 
 - New "explanation standard": fit test for examples (minimal instance, or an analogy with its map written), two-registers-one-claim check, mechanism before machinery, one vetted canonical example per key intuition chosen at research time

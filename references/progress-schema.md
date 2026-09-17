@@ -25,6 +25,14 @@ Read it at the start of every session (after `.learning/learner.md`, the cross-c
       "lesson": "2.3",
       "understanding": "settling",
       "last_touched_session": 24,
+      "evidence": [
+        {
+          "session": 24,
+          "task": "interpret simulation of sample means",
+          "observation": "recognized the distributional pattern with a prompt; confused it with a single sample path",
+          "support": "guided"
+        }
+      ],
       "notes": [
         "clicked via the 'many small independent nudges' framing; the galton board analogy landed",
         "still conflates convergence of the distribution with convergence of a sample path — revisit with a simulation angle"
@@ -44,13 +52,15 @@ Read it at the start of every session (after `.learning/learner.md`, the cross-c
 Field notes:
 
 - **`concepts`** is keyed by the stable concept IDs defined in `curriculum.md`. Concepts are the unit of understanding; lessons are just the delivery order.
-- **`understanding`** is the tutor's judgment of how settled the intuition is, one of three values:
-  - `"shaky"` — taught, but it hasn't clicked; the user can't yet say why it works. Revisit from a *different angle* within a session or two.
-  - `"settling"` — clicked with scaffolding, or clicked once but hasn't been used since. Weave it into later material where it naturally recurs; spot-check in a warm-up.
-  - `"solid"` — the user can explain why it works and where it breaks, and has followed it in a fresh context. Occasional spot-checks only.
-  This is a judgment formed from the whole conversation — explanations in the user's own words, questions they ask, reasoning on probes, and their own self-report — not a count of exercise results. Move it in either direction whenever the evidence says so. **Floor: a concept the user never engaged with (delivered, but never explained back, applied, or questioned) stays `"shaky"` regardless of how the delivery went; promotion requires a successful fresh-angle probe, ideally in a later session.**
-- **`notes`** (per concept) is the heart of the notebook: live misconceptions stated precisely, which analogies/explanations landed, and what angle to try next. Short entries; keep the 3–4 most useful, prune stale ones when a misconception dies. **When a lesson closes, compact its concepts' notes to the durable residue** — state, keeper framings, open spot-checks — and drop the narrative (it lives in the session logs).
-- **`seen_angles`** stores one-line fingerprints (session + gist) of problems and framings already used, so revisits are never reruns. Cap at ~5 per concept, oldest dropped.
+- **`understanding`** is the tutor's judgment, with four values:
+  - `"unassessed"`: insufficient evidence about understanding. Delivery, silence, or "okay" alone does not show either mastery or confusion.
+  - `"shaky"`: the learner demonstrated a confusion or could not yet reason through the relevant step. Record the specific evidence and repair it when it matters.
+  - `"settling"`: the learner reasoned correctly with help, or demonstrated understanding in a limited context. Seek a useful opportunity for independent application.
+  - `"solid"`: the learner explained and applied the idea independently, with its relevant assumptions or limits. Later application can strengthen confidence that it persisted.
+  Judge the whole conversation, including revealing questions and spontaneous corrections. A formal probe is not required. Self-report helps set pace but does not manufacture evidence of independent application. Move a judgment when evidence changes; do not downgrade solely because time passed or a check was declined.
+- **`evidence`** is an optional array of brief observations. Each entry has `session`, `task`, `observation`, and `support` (`"independent"`, `"guided"`, or `"demonstrated_by_tutor"`). Keep only observations that explain the current judgment, usually one to three. Tutor demonstration records exposure, not learner mastery. Do not invent historical evidence to populate this field; existing notes can suffice until new evidence appears.
+- **`notes`** (per concept) records live misconceptions, which explanations helped, and relevant unresolved questions. Keep the three or four most useful entries and remove resolved misconceptions. When a lesson closes, compact its notes to the current judgment, useful explanations, and open questions. Session history belongs in the logs.
+- **`seen_angles`** stores one-line fingerprints (session + gist) of problems and framings already used. Reuse a familiar case when it helps reconnect the argument; vary the important feature when assessing application beyond memorization. Cap at about five per concept, oldest dropped.
 - **`notes`** (top level) is free-form tutor memory — but only for what's *course-specific*: how this course is run, its goals and grounding, environment recipes it alone needs. If the course has a **contract** (see SKILL.md), it sits at the top of this field, numbered, and is read before everything else. Anything true of the learner in every course (environment, energy patterns, math background, analogy rules, probe craft) belongs in `.learning/learner.md`, not here — never duplicate it. Update sparingly; read always.
 
 Optional fields that mature courses have found useful (add them when the course needs them, in this shape):
@@ -61,8 +71,14 @@ Optional fields that mature courses have found useful (add them when the course 
 
 ## Choosing warm-up items
 
-No scheduling algorithm — pick by judgment at session start: shaky concepts first (freshest misconception first), then any settling concept that hasn't been touched in a while or that today's lesson will build on. Cap at 2–3; this is a course, not a card deck. If shaky items pile up faster than warm-ups can absorb (more than ~6), suggest a `/learn review` session rather than crowding regular sessions.
+Choose a short revisit when it supports today's lesson or addresses an important unresolved confusion. A warm-up is optional. Unassessed concepts do not automatically become a testing backlog. In `design-partner` courses, use natural callbacks and optional discussion instead of deferred drills. When several prerequisite gaps impede progress, suggest focused review.
+
+## Compatibility with existing courses
+
+Keep existing concept IDs, histories, course statuses, and demonstrated understanding. Add evidence only as useful observations become available; missing `evidence` is valid. An old `shaky` judgment may mean actual confusion or simply "not probed." Inspect its notes before changing it. Use `unassessed` only when insufficient evidence was the sole basis; preserve `shaky` when a documented misconception remains unresolved. Do not infer mastery from lesson completion or mass-migrate judgments.
+
+Read legacy course style `tutor` as `tutorial`. Retire inherited probe floors and mandatory make-up checks in the current contract, while preserving explicit learner choices and useful revisit pointers. Record course maintenance as maintenance; it does not increment teaching sessions or hours.
 
 ## Streak
 
-Increment `streak.current` if the last session was yesterday or today; reset to 1 otherwise. Never guilt the user about a broken streak — note the new one starting and move on.
+Increment `streak.current` if the last session was yesterday; leave it unchanged for another session today; otherwise reset it to 1. Preserve existing history. Streaks are optional context, not evidence of understanding, and never a reason to guilt the learner.

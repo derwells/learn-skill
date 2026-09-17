@@ -1,6 +1,6 @@
 # learn
 
-Claude Code skill that turns Claude into a daily tutor. Give it a topic, it researches a curriculum, then runs short lessons in dialogue, with code and figures in Jupyter notebooks. Keeps a notebook of what clicked and what didn't, so a course survives months of short sessions.
+A portable skill for a professor-led course of study. Give it a topic and it researches a curriculum, prepares examples and contrasts, and leads lessons with room for questions. It keeps notes on what you understand and where you need help, so the course survives months of short sessions.
 
 I made this because I couldn't study consistently after work. Textbook exercises want a full hour of deep focus and I never had that at 9pm. These lessons are short enough to do tired. The tutor remembers where you left off, you just show up.
 
@@ -36,7 +36,7 @@ Courses live in `.learning/` at the project root:
 └── <course>/
     ├── curriculum.md      # units, lessons, the intuition each one must land
     ├── progress.json      # tutor's notebook: what clicked, what's shaky, why
-    ├── materials/         # teaching notes per unit, one vetted example per idea
+    ├── materials/         # lesson arguments, worked examples, contrasts, applications
     ├── notebooks/         # one Jupyter notebook per lesson
     └── sessions/          # short log per session
 ```
@@ -45,13 +45,13 @@ Worth committing `.learning/` if the project is a repo.
 
 ## How it teaches
 
-- Fitting examples first, then the math. The smallest real case where you can see the whole mechanism, or an analogy whose mapping is spelled out. Never a random example
-- Explains, then stops. Lets the idea sit and takes the next step from what you say, instead of quizzing you the moment it finishes a paragraph
-- Probes instead of quizzes, and later rather than sooner: predict what a cell prints, pick the right prior, spot what's wrong in a broken version
-- Code and figures in a Jupyter notebook per lesson, executed before it points you at a cell
-- Never repeats a problem or framing you've already seen
-- Your questions > coverage. 30 minutes is a guideline, not a pace
-- Logs its own mistakes at session end, reads them next session
+- Leads each lesson around a question and develops the reasoning needed to answer it.
+- Uses deliberate comparisons to show what distinguishes concepts, why methods work, and where assumptions matter.
+- Connects examples to the actual mathematics. Explains choices and valid steps rather than merely naming them.
+- Adapts explanation length to the argument and your response. You can interrupt without having to direct the lesson yourself.
+- Moves from worked examples to guided and independent application when useful. Listening and optional discussion remain valid choices.
+- Uses executed notebook demonstrations and precise figures. Keeps pending prediction answers out of view.
+- Preserves your questions and pace. Thirty minutes is a guideline; a lesson can span sessions.
 
 Wrong answers are fine. What matters is you end up seeing why.
 
@@ -67,9 +67,9 @@ A concept entry in the notebook looks like this:
 }
 ```
 
-That's what the tutor reads back three weeks later. It never re-asks a question you've seen — it tracks the angles it has already tried.
+That's what the tutor reads back three weeks later. It tracks which explanations helped and can reuse a familiar example before changing it to test a new distinction. Missing evidence is recorded as `unassessed`; a demonstrated confusion is `shaky`.
 
-Most of SKILL.md came from real sessions, not upfront design. Almost every rule in it is there because not having it broke a session at least once.
+Existing courses keep their history and scope. On resumption, the tutor updates upcoming materials and retires inherited brevity limits or mandatory probe queues while preserving your explicit preferences.
 
 ## License
 

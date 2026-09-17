@@ -1,9 +1,10 @@
 # Lesson notebooks
 
-Code and figures live in Jupyter notebooks, one per lesson, at
+Substantial runnable demonstrations and persistent figures live in Jupyter notebooks, one per lesson, at
 `.learning/<course>/notebooks/<unit>-<lesson>-<slug>.ipynb`. The learner opens the notebook
-(VS Code, JupyterLab, or a browser over SSH) beside the chat. The chat carries the dialogue;
-the notebook carries everything runnable and everything visual.
+(VS Code, JupyterLab, or a browser over SSH) beside the chat. Short inline code and equations
+can support the dialogue without creating a notebook. Use a notebook when execution, a figure,
+or continued experimentation helps the lesson; do not interrupt an explanation to satisfy a format.
 
 A course may declare a different notebook tool in its "Course mode" section (marimo `.py`
 notebooks, for instance, when the learner wants git-diffable, reactive files). Default to
@@ -11,25 +12,29 @@ Jupyter when unstated. The rules below apply either way.
 
 ## Rules
 
-1. **Execute before you point.** Never reference a cell, output, or figure the learner can't
-   already see. Run the notebook in place before mentioning it:
-   `jupyter nbconvert --to notebook --execute --inplace <path>`. If a cell fails, fix it
-   first — a lesson built on a broken cell derails the session.
+1. **Execute demonstrations before you point.** Run completed demonstration cells and
+   inspect their outputs before referring to them. For a notebook containing only completed
+   demonstrations, use `jupyter nbconvert --to notebook --execute --inplace <path>`.
+   Keep unfinished exercises and answers to pending predictions out of bulk execution.
+   Validate prediction results in a separate scratch execution, without publishing the answer
+   in the learner's notebook. A failed demonstration must be repaired before teaching from it.
 2. **Figures are claims.** Label the axes, mark anything that must line up (a tick, a guide
    line, a label). Look at the rendered output before pointing at it and confirm it shows
    the thing you're about to say. No decorative or approximate geometry.
-3. **Small cells, one idea each.** A markdown cell with the idea in plain words (the same
-   sentence you'd say in chat), then a short code cell that shows it. Variable names are
-   the concept's names.
-4. **Predict-then-run is the canonical probe.** A markdown cell that asks for a prediction
-   ("what shape does `futures` have? what happens to the fan if `num_samples=1`?"), then the
-   code cell. The learner answers in chat, then runs. Ask the prediction only after the idea
-   has had time to sit — the probe rules in SKILL.md apply to notebooks too.
-5. **The learner types too.** Hands-on lessons leave a cell for them to complete
-   (`# your turn:` with the setup written). Their cell counts as a production probe.
+3. **Make the argument visible.** Introduce the lesson's question, explain why each code
+   step is needed, and connect the output to the general claim. Keep cells small enough to
+   inspect. Use consistent variable names across chat, code, and figures.
+4. **Compare deliberately.** Where a distinction matters, show cases with the same setup
+   and change the relevant feature. Align plots and scales where comparison requires it.
+   Explain what changed and why. A prediction before execution is useful when the learner
+   has enough information to reason; explain first when they do not.
+5. **Reduce help as appropriate.** A worked example can lead to a partly completed cell
+   and then a new application. Leave consequential decisions to the learner, with setup
+   supplied. Participation follows the course mode and the learner's preference. A notebook
+   walkthrough is valid when they want to listen; missing exercise answers are not failures.
 6. **Keep notebooks per lesson, not per session.** A revisit adds cells to the lesson's
-   notebook under a dated heading; it doesn't create a new file. Cap notebooks at what one
-   sitting can read.
+   notebook under a dated heading; it doesn't create a new file. Use sections so a lesson
+   spanning sessions remains navigable.
 7. **Write with the host's notebook tool** (`NotebookEdit` in Claude Code) rather than
    hand-editing `.ipynb` JSON. If none exists, generate with `nbformat` from Python.
 
@@ -51,6 +56,7 @@ the figures the learner saw.
 
 ## Push channel
 
-If `learner.md` says the learner is away from the notebook (mobile, end of session), push
-figures over the recorded channel (e.g. Telegram) in the same turn you build them. The
-notebook remains the record; the push is a convenience.
+If the learner is away from the notebook, use an available delivery method they have
+authorized under the host's rules. A recorded channel preference alone does not override
+the host's permission requirements. The notebook remains the record. If external sending
+is unavailable, show the figure in the current interface when possible.
