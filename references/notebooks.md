@@ -1,8 +1,9 @@
 # Lesson notebooks
 
 Substantial runnable demonstrations and persistent figures live in Jupyter notebooks, one per lesson, at
-`.learning/<course>/notebooks/<unit>-<lesson>-<slug>.ipynb`. The learner opens the notebook
-(VS Code, JupyterLab, or a browser over SSH) beside the chat. Short inline code and equations
+`.learning/<course>/notebooks/<unit>-<lesson>-<slug>.ipynb`. The learner can open the notebook
+(VS Code, JupyterLab, or a browser over SSH) for experimentation; show lesson figures inline
+in Paseo so following the explanation does not require opening it. Short inline code and equations
 can support the dialogue without creating a notebook. Use a notebook when execution, a figure,
 or continued experimentation helps the lesson; do not interrupt an explanation to satisfy a format.
 
@@ -54,9 +55,14 @@ pins (e.g. `arviz<1.0`) live in the course's `progress.json` notes. Add `.venv/`
 `.gitignore`; notebooks themselves are worth committing with outputs, since the outputs are
 the figures the learner saw.
 
-## Push channel
+## Figure delivery
 
-If the learner is away from the notebook, use an available delivery method they have
-authorized under the host's rules. A recorded channel preference alone does not override
-the host's permission requirements. The notebook remains the record. If external sending
-is unavailable, show the figure in the current interface when possible.
+Show figures inline in Paseo using the host's supported image display mechanism. Save and
+inspect the rendered image, then display it alongside the explanation; merely saving a file
+or giving its path does not make the figure visible. The notebook remains the record.
+
+Older learner notes and example transcripts may refer to pushing figures through Telegram.
+Those are not the current delivery default. Use Telegram or another external channel only
+when the learner explicitly requests it, under the host's authorization rules. If inline
+display fails, provide a link to the saved figure and explain the limitation; do not
+automatically switch to Telegram.

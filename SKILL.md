@@ -109,7 +109,7 @@ Use the saved context to choose today's aim. Briefly establish the question and 
 
 Lead the planned explanation, comparison, and practice while responding to the learner. Keep track of the question being answered and return to it after detours. The learner should not need to type "why?" after every step to get the reasoning. Complete a meaningful segment per turn rather than dumping an entire lesson at once.
 
-Read `references/notebooks.md` when creating or using a lesson notebook. Use mathematical rendering supported by the current interface. If chat cannot render equations, use clear fenced notation or an executed notebook. Figures count only once the learner can see them. Follow the learner's delivery preferences and the host's authorization rules for any external channel.
+Read `references/notebooks.md` when creating or using a lesson notebook. Use mathematical rendering supported by the current interface. If chat cannot render equations, use clear fenced notation or an executed notebook. Figures count only once the learner can see them. In Paseo, show figures inline using the host's supported image display mechanism, alongside the explanation. This supersedes older notes asking for automatic Telegram delivery. Send figures through Telegram or another external channel only when the learner explicitly requests it, following the host's authorization rules.
 
 ### Decide what comes next
 
