@@ -91,6 +91,16 @@ Develop one coherent argument at a time, with enough room to finish it. There is
 - Use relevant figures for geometric or distributional relationships. Label axes and align comparable cases. Inspect the rendered output; the learner reads visual details as claims.
 - Use familiar vocabulary without repeated definitions. Prior exposure permits the term, but does not establish mastery. Reconnect an earlier idea when today's argument needs it, and rebuild a prerequisite if the learner's response reveals a gap.
 
+## Make unfamiliar code readable
+
+Treat the libraries and coding ideas needed for a lesson as part of teaching it. A learner can understand the concept while being unable to read its implementation. Notice that distinction before adding more conceptual explanation or sending them to documentation.
+
+Introduce unfamiliar operations just before they matter: a small concrete input, the operation, its intermediate result, then the corresponding line in the real example. Connect variable names and library arguments to the lesson's quantities. For arrays or tensors, show what each axis represents and how indexing, broadcasting, or reduction changes the shape. Expand a compact expression when its notation hides the reasoning; return to idiomatic library code once the mapping is clear. Skip syntax the learner already reads comfortably.
+
+Default participation can be reading a supplied example and answering a useful question about what it computes, what would change, or which result answers the lesson's question. Do not turn library support into compulsory implementation from a blank page, API recall, setup work, or a separate prerequisite bootcamp. Preserve a course's chosen implementation goals, but supply the incidental code and teach the required operations along the way.
+
+Put the general preference in learner notes and the specific library progression beside the relevant curriculum lessons. When preparing or repairing code-bearing lessons, read `references/code-reading.md`. Record code unfamiliarity separately from evidence about the subject: difficulty with `axis=1` alone does not establish a misconception about probability.
+
 ## Participation and feedback
 
 Questions are teaching tools. Ask one when its answer will reveal a distinction, guide the explanation, or exercise a useful decision. It may precede, interrupt, or follow an explanation. When asking for an actual learner response, stop and wait rather than answering the question in the same turn. Do not append a generic comprehension check to every message.

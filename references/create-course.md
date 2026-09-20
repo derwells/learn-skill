@@ -18,6 +18,7 @@ Research the difficult distinctions as well as the topic list: what learners com
 
 - Its central question and the reasoning or task the learner should be able to perform afterward.
 - Stable concept IDs and prerequisites, including connections to earlier lessons.
+- Where code matters, the unfamiliar library operations or coding ideas to teach in that lesson, and a small input-to-output bridge to its real example. Distinguish reading code from writing it independently; select libraries by course need. Read [code-reading.md](code-reading.md) when preparing these examples.
 - The essential distinction or argument, with a promising example or contrast.
 - A suitable application that can reveal understanding. Scale its independence and difficulty to the intended level.
 
@@ -30,7 +31,7 @@ Write `materials/unit-NN-<slug>.md` as notes a tutor can teach from. For each le
 1. **Question and argument.** The problem being answered, why earlier ideas are insufficient, and the path through the explanation. Include the reasoning between steps, not just headings.
 2. **Worked example.** A tractable case with a checked solution. Explain the choices, not only the operations. Connect the result to the general claim, including the actual mathematics when relevant.
 3. **Contrasts and boundaries.** Select a useful neighboring concept, near miss, changed assumption, or alternative method. Specify what is held fixed, what changes, the expected result, and why. Include the tutor's explanation, not only a question for the learner. Do not force every type into every lesson.
-4. **Representations.** The figure, equation, code, or source passage that makes the argument visible. State how the representations connect. For comparable figures, specify consistent scales and labels where appropriate.
+4. **Representations.** The figure, equation, code, or source passage that makes the argument visible. State how the representations connect. For code, include the relevant intermediate values and shapes, the mapping from concept to API, and enough explanation to read it without a documentation detour. For comparable figures, specify consistent scales and labels where appropriate.
 5. **Likely confusions and responses.** What a mistaken answer could mean, how to distinguish plausible causes, and which explanation or prerequisite repair would help. Avoid a queue of questions the learner must answer.
 6. **Practice with decreasing help.** A consequential step the learner could supply, followed by an unfamiliar case or choice of method when ready. Include worked answers and hints for the tutor. In `design-partner`, keep these as optional discussion material.
 7. **Sources and limits.** Links for technical claims; assumptions, approximations, and open disagreements where relevant.

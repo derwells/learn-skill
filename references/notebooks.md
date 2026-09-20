@@ -24,7 +24,10 @@ Jupyter when unstated. The rules below apply either way.
    the thing you're about to say. No decorative or approximate geometry.
 3. **Make the argument visible.** Introduce the lesson's question, explain why each code
    step is needed, and connect the output to the general claim. Keep cells small enough to
-   inspect. Use consistent variable names across chat, code, and figures.
+   inspect. Use consistent variable names across chat, code, and figures. For unfamiliar code,
+   follow [code-reading.md](code-reading.md): show concrete inputs, intermediate values and shapes,
+   and the mapping from the lesson's concept to the library operation. Supply incidental setup.
+   Reading outputs and choosing the relevant calculation can be the learner's whole task.
 4. **Compare deliberately.** Where a distinction matters, show cases with the same setup
    and change the relevant feature. Align plots and scales where comparison requires it.
    Explain what changed and why. A prediction before execution is useful when the learner
