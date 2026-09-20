@@ -20,6 +20,7 @@ Research the difficult distinctions as well as the topic list: what learners com
 - Stable concept IDs and prerequisites, including connections to earlier lessons.
 - Where code matters, the unfamiliar library operations or coding ideas to teach in that lesson, and a small input-to-output bridge to its real example. Distinguish reading code from writing it independently; select libraries by course need. Read [code-reading.md](code-reading.md) when preparing these examples.
 - The essential distinction or argument, with a promising example or contrast.
+- The mathematical or conceptual starting point, and which definitions must precede the example. For a learner who prefers math first, plan the equation or derivation before its instances; do not impose analogy-first ordering.
 - A suitable application that can reveal understanding. Scale its independence and difficulty to the intended level.
 
 Plan later opportunities to use important ideas in different contexts and choose between methods without being told which one to apply. Include derivations, readings, problem sets, or projects when the course goals need them. An advanced course should reach the intended depth, with prerequisite support along the way.
@@ -30,13 +31,15 @@ Write `materials/unit-NN-<slug>.md` as notes a tutor can teach from. For each le
 
 1. **Question and argument.** The problem being answered, why earlier ideas are insufficient, and the path through the explanation. Include the reasoning between steps, not just headings.
 2. **Worked example.** A tractable case with a checked solution. Explain the choices, not only the operations. Connect the result to the general claim, including the actual mathematics when relevant.
-3. **Contrasts and boundaries.** Select a useful neighboring concept, near miss, changed assumption, or alternative method. Specify what is held fixed, what changes, the expected result, and why. Include the tutor's explanation, not only a question for the learner. Do not force every type into every lesson.
+3. **Contrasts and boundaries.** Select a useful neighboring concept, near miss, changed assumption, or alternative method. Specify what is held fixed, what changes, the expected result, and why. Include the tutor's explanation and identify what the learner can infer before hearing it. Do not force every type into every lesson.
 4. **Representations.** The figure, equation, code, or source passage that makes the argument visible. State how the representations connect. For code, include the relevant intermediate values and shapes, the mapping from concept to API, and enough explanation to read it without a documentation detour. For comparable figures, specify consistent scales and labels where appropriate.
 5. **Likely confusions and responses.** What a mistaken answer could mean, how to distinguish plausible causes, and which explanation or prerequisite repair would help. Avoid a queue of questions the learner must answer.
 6. **Practice with decreasing help.** A consequential step the learner could supply, followed by an unfamiliar case or choice of method when ready. Include worked answers and hints for the tutor. In `design-partner`, keep these as optional discussion material.
 7. **Sources and limits.** Links for technical claims; assumptions, approximations, and open disagreements where relevant.
 
 These are preparation requirements, not a seven-part script to recite in chat. Use the learner's response to choose which pieces to teach. If an idea genuinely needs no contrast, explain it directly rather than inventing a misleading comparison.
+
+For mathematical lessons, use [lesson-craft.md](lesson-craft.md). Prepare natural stopping points that leave an example or equation available for private thought. An application can occur later; a fully explained comparison followed immediately by a required answer is not the only form of participation.
 
 A compact example of useful preparation: for recursive termination, hold the integer input fixed and compare self-calls with unchanged input, decreasing input without a stopping condition, and decreasing input that reaches a stopping condition. Trace each. Then test the apparent fix with a decrement of two and a stopping condition at zero: on positive odd input it never reaches zero. The tutor's explanation must connect the stopping condition, progress, and input domain. A new application could use a shrinking list rather than an integer.
 

@@ -11,6 +11,16 @@ A course may declare a different notebook tool in its "Course mode" section (mar
 notebooks, for instance, when the learner wants git-diffable, reactive files). Default to
 Jupyter when unstated. The rules below apply either way.
 
+## Moving between chat and the notebook
+
+Treat opening a notebook, finding a cell, scrolling, and rerunning code as learner actions that
+take time. For discussion, put the relevant excerpt or displayed figure in chat. For an actual
+notebook task, identify the file or verified link and a stable heading or recognizable cell,
+then state one action and wait for the result needed next. Use labels such as the cell beginning
+`summary = az.summary(...)`, not an unexplained "row 7" or a cell number that may have shifted.
+Do not assume the learner is still looking at output from an earlier run. Tutor execution and
+material saved to disk do not establish what is visible to the learner.
+
 ## Rules
 
 1. **Execute demonstrations before you point.** Run completed demonstration cells and
@@ -30,7 +40,8 @@ Jupyter when unstated. The rules below apply either way.
    Reading outputs and choosing the relevant calculation can be the learner's whole task.
 4. **Compare deliberately.** Where a distinction matters, show cases with the same setup
    and change the relevant feature. Align plots and scales where comparison requires it.
-   Explain what changed and why. A prediction before execution is useful when the learner
+   Leave space to inspect the change before revealing its explanation. Keep optional
+   derivations and solutions in separate cells or collapsed details. A prediction before execution is useful when the learner
    has enough information to reason; explain first when they do not.
 5. **Reduce help as appropriate.** A worked example can lead to a partly completed cell
    and then a new application. Leave consequential decisions to the learner, with setup

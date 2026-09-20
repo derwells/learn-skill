@@ -4,7 +4,7 @@ Use this when unfamiliar libraries or notation obstruct a lesson. The aim is to 
 
 ## Prepare the bridge
 
-Choose the smallest example that retains the mechanism. Start with concrete values or a short plain-Python calculation when that clarifies a compact library call. Keep the same quantities and variable names when translating into the library. Identify inputs, output, and the line that implements the concept; separate setup and plotting from that line.
+Choose the smallest example that retains the mechanism. Establish the mathematical or conceptual relationship before translating it into unfamiliar syntax. Start with concrete values or a short plain-Python calculation when that clarifies a compact library call. Keep the same quantities and variable names when translating into the library. Identify inputs, output, and the line that implements the concept; separate setup and plotting from that line.
 
 For unfamiliar arrays, label the axes in domain terms, print a few values, and show the input and output shapes. Teach indexing as selecting positions, not specifying counts. Explain broadcasting as how differently shaped inputs align, and reductions as which axis is combined and which remains. Expand method chains into named intermediates. For unfamiliar framework objects, explain what the object represents before showing its attributes; a model declaration, a numerical draw, and a fitted result are different things.
 
@@ -31,7 +31,7 @@ Contrast `below.mean(axis=0)`: it combines futures and leaves one fraction per w
 
 - NumPy and probability: concrete values, arrays and indexing, elementwise arithmetic, sums and normalization, then axes, broadcasting, and random draws as the lesson needs them.
 - PyMC: a numerical generative calculation, the corresponding model declarations and `observed` data, then fitting and reading returned draws. Explain the difference between constructing a symbolic model and executing numerical operations. Teach named dimensions when reading actual outputs requires them.
-- PyTorch: a tiny tensor with labeled axes, slicing and reshaping, then loss, gradients, and updates. Explain which operation changes values, shape, or gradient state before using a compact training loop.
+- PyTorch: establish the loss and parameter update mathematically, then map a tiny token example to tensors with labeled axes, slicing, and reshaping. Explain which operation changes values, shape, or gradient state before using a compact training loop. Array mechanics support reading the training objective; they need not precede its meaning.
 - SDKs, manifests, and other libraries: trace a small request or configuration through its concrete result. Teach unfamiliar fields and conventions at the point of use. A course without code need not acquire a coding strand.
 
 Keep this support inside the planned lessons. The curriculum names where each operation first matters; it need not allocate a new unit. On resumption, repair the current example instead of restarting completed units. Preserve course-specific hands-on goals and listening preferences.
